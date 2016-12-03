@@ -8,10 +8,10 @@
   </div>
   <div>
     <form>
-      <input placeholder='filter'>
+      <input placeholder='filter' ng-model='liveSearch'>
     </form>
   </div>
-  <div ng-repeat="link in data.links | orderBy:'visits':true">
+  <div ng-repeat="link in data.links | orderBy:'visits':true | filter:liveSearch">
     <img src='../assets/redirect_icon.png'/>
     <div class='info'>
       <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
