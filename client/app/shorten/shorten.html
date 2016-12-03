@@ -1,6 +1,29 @@
-<div id='container'>
-<!-- Your code here -->
-
+<div ng-controller='ShortenController' id='container'>
+   <div class='navigation'>
+    <ul>
+      <li><a href='#/links' class='index'>All Links</a></li>
+      <li><a href='#/shorten' class='create'>Shorten</a></li>
+      <li><a href='#/logout' class='signout'>Sign Out</a></li>
+    </ul>
+    </div>
 </div>
 
-
+<div class="container">
+<div class="row">  
+   
+<div class="col-sm-6">
+  
+    <form name="urlForm" ng-submit="addLink()" novalidate>
+        
+        <div class="form-group" ng-class="{ 'has-error' : urlForm.url.$invalid}">
+            <label>URL</label>
+            <input type="url" name="url" class="form-control" ng-model="link.url">
+            <p ng-show="urlForm.url.$invalid" class="help-block">Enter a valid url.</p>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" ng-disabled="urlForm.$invalid">Submit</button>
+        
+    </form>
+</div>
+</div>
+</div>  

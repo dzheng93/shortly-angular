@@ -1,9 +1,22 @@
 <div id='signin'>
   <h1>signin</h1>
-  <form name="signinForm" ng-submit='signin()'>
-    <input type='text'ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signin</button>
+  <form name="userForm" ng-submit="signin()" novalidate>
+
+  <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid}">
+      <label>Username</label>
+      <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="6" ng-maxlength="12">
+      <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+      <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid}">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="12">
+      <p ng-show="userForm.password.$invalid" class="help-block">Enter a valid password. Must be 6-12 characters.</p>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Sign In</button>
+  
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>
