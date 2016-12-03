@@ -31,4 +31,14 @@ describe('Routing', function () {
     expect($route.routes['/shorten'].controller).to.equal('ShortenController');
     expect($route.routes['/shorten'].templateUrl).to.equal('app/shorten/shorten.html');
   });
+
+  it('Should have /logout route that redirects to signin page', function () {
+    expect($route.routes['/logout']).to.be.defined;
+    expect($route.routes['/logout'].templateUrl).to.equal('app/auth/signin.html');
+  });
+
+  it('Should otherwise default to links view if an unknown client-side route is attempted, or signin views if not authenticated', function () {
+    expect($route.routes['null']).to.be.defined;
+    expect($route.routes['null'].templateUrl).to.equal('app/auth/signin.html');
+  });
 });

@@ -64,4 +64,14 @@ describe('AuthController', function () {
     $httpBackend.flush();
     expect($window.localStorage.getItem('com.shortly')).to.equal(token);
   });
+
+  it('should remove token in localStorage after signout', function () {
+    // create a fake JWT for auth
+    var token = 'sjj232hwjhr3urw90rof';
+    $httpBackend.expectPOST('/api/users/signin').respond({token: token});
+    $scope.signin();
+    $httpBackend.flush();
+    Auth.signout();
+    expect($window.localStorage.getItem('com.shortly')).to.equal(null);
+  });
 });

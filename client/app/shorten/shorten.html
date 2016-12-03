@@ -13,11 +13,11 @@
    
 <div class="col-sm-6">
   
-    <form name="urlForm" ng-submit="addLink()" novalidate>
+    <form name="urlForm" ng-submit="addLink();" novalidate>
         
         <div class="form-group" ng-class="{ 'has-error' : urlForm.url.$invalid}">
             <label>URL</label>
-            <input type="url" name="url" class="form-control" ng-model="link.url">
+            <input type="url" name="url" class="form-control" ng-model="link.url" placeholder="Enter a url...">
             <p ng-show="urlForm.url.$invalid" class="help-block">Enter a valid url.</p>
         </div>
         

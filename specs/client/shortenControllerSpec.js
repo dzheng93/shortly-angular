@@ -47,4 +47,11 @@ describe('ShortenController', function () {
     $scope.addLink();
     $httpBackend.flush();
   });
+
+  it('should clear form after creating new links with addLink()', function () {
+    $httpBackend.expectPOST('/api/links').respond(201, '');
+    $scope.addLink();
+    expect($scope.link.url).to.be.undefined;
+    $httpBackend.flush();
+  });
 });

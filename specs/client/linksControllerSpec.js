@@ -30,6 +30,11 @@ describe('LinksController', function () {
     expect($scope.data).to.be.an('object');
   });
 
+  it('should have a liveSearch property on the $scope', function () {
+    createController();
+    expect($scope.liveSearch).to.exists;
+  });
+
   it('should call `Links.getAll()` when controller is loaded', function () {
     sinon.spy(Links, 'getAll');
     $httpBackend.expectGET('/api/links').respond(200);
